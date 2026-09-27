@@ -2,6 +2,7 @@ import argparse
 import os
 import pathlib
 import sys
+import time
 from typing import Optional, Tuple, List, Any
 
 from ytmusicapi import YTMusic, OAuthCredentials
@@ -71,6 +72,8 @@ def create_playlist(ytm_instance, title, description):
     if playlist_browse_id is None:
         print("Creating playlist...")
         pl_id = ytm_instance.create_playlist(title, description)
+        # give some time
+        time.sleep(1)
     else:
         pl_id = playlist_browse_id[2:]
         playlist_item = ytm_instance.get_playlist(pl_id)
